@@ -1,0 +1,22 @@
+class Creation<ActiveRecord::Base
+    has_many :picture
+    before_destroy :ensure_not_referenced_by_any_picture
+	set_primary_key :creation_id
+	
+	def set_primary_key(value = nil)
+         define_attr_method :primary_key, value
+    end
+
+    def ensure_not_referenced_by_any_pircture
+        if pictures.count.zero?
+           return true
+        else
+            errors[:base]<<"Pictures present"
+            return false
+        end
+    end
+	
+end
+
+
+

@@ -1,0 +1,6 @@
+%h1 Pictures#index
+
+%tbody
+	-@pictures.each do |picture|
+		=image_tag picture.url
+
