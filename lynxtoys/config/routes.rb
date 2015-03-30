@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :creations
 
   get 'creations/index' => 'creations#index'
-
+  get 'creations/:id/delete' => 'creations#delete', :as => :creations_delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

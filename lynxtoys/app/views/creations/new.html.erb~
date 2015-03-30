@@ -1,7 +1,5 @@
 <h1>Creations#new</h1>
 <p>Find me in app/views/creations/new.html.erb</p>
-<h1>Creation#new</h1>
-<p>Find me in app/views/creation/new.html.erb</p>
 
 <h1>New Category</h1>
 

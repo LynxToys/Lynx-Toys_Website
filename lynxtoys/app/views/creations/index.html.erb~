@@ -21,7 +21,9 @@
       <tr>
         <td><%= creation.name %></td>
 	<td><%= link_to creation.image.url, creation.image.url %></td>
-
+        <td><div class="thumbnail">
+           <img src= <%=creation.image.url %> >
+        <div></td>
         <td><%= link_to 'Show', creation %></td>
         <td><%= link_to 'Edit', edit_creation_path(creation) %></td>
         <td><%= link_to 'Delete', creations_delete_path(:id => creation.id) %></td>
