@@ -3,7 +3,6 @@ class CreateCreations < ActiveRecord::Migration
     create_table :creations do |t|
 	  t.string :name
 	  t.integer :creation_id
-      t.timestamps null: false
     end
   end
 end
