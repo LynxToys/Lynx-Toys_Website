@@ -5,7 +5,8 @@
 <%= "name: " %>
 <%= @creation.name %><br>
 <%= "image: "%><br>
+<%= image_tag @creation.image.url %><br>
 <%= "image_url: "%>
-
+<%= link_to @creation.image.url, @creation.image.url %>
 
 
