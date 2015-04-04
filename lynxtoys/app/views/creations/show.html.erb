@@ -5,7 +5,12 @@
 <%= "name: " %>
 <%= @creation.name %><br>
 <%= "image: "%><br>
+<% @creation.pictures.each do |p| %>
+   <div class="col-md-3 images_1_of_4">
+     <div class="fancyDemo">
+        <%= image_tag p.image.url, size:"150x150" %> 
+     </div>
+   </div>
+<% end %>
+
 <%= "image_url: "%>
-
-
-
