@@ -13,7 +13,7 @@
              <p class="para"><%= creation.name %></p>
              <h4><%= link_to 'Show', creation %></h4>
              <h4><%= link_to 'Edit', edit_creation_path(creation) %></h4>
-             <h4><%= link_to 'Delete', creations_delete_path(:id => creation.id) %></h4>
+             <h4><%= link_to 'Delete', creations_delete_path(creation) %></h4>
           </div>
       
         <% end %>
