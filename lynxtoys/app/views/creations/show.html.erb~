@@ -5,7 +5,6 @@
 <%= "name: " %>
 <%= @creation.name %><br>
 <%= "image: "%><br>
-<<<<<<< HEAD
 <% @creation.pictures.each do |p| %>
    <div class="col-md-3 images_1_of_4">
      <div class="fancyDemo">
@@ -13,11 +12,3 @@
      </div>
    </div>
 <% end %>
-=======
-<%= image_tag @creation.image.url %><br>
-<%= "image_url: "%>
-<%= link_to @creation.image.url, @creation.image.url %>
-
->>>>>>> 92f5881472f087906838104c199b6e9bdcc2abeb
-
-<%= "image_url: "%>

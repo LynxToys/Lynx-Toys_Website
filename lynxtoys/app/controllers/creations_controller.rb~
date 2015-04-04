@@ -6,6 +6,7 @@ class CreationsController < ApplicationController
 #  end
   def index
     @creations = Creation.all
+    @picture = Creation.pictures[0]
   end
   
   def new
@@ -46,6 +47,6 @@ class CreationsController < ApplicationController
   private
   
   def creation_params
-	params.require(:creation).permit(:name,:description)
+	params.require(:creation).permit(:name,:creator_name,:description,:likes)
   end
 end
