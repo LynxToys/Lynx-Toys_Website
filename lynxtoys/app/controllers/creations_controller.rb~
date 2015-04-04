@@ -6,7 +6,6 @@ class CreationsController < ApplicationController
 #  end
   def index
     @creations = Creation.all
-    @picture = Creation.pictures[0]
   end
   
   def new

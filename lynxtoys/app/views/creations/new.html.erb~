@@ -17,5 +17,4 @@
     <h2 class="style">Creations#new</h2>
 		<h2>Please fill the form</h2>
 		<%= render 'form' %>
-  </div>
-</div>
+
