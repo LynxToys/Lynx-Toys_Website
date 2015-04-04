@@ -1,3 +1,5 @@
+<%= render 'shared/topnav' %>
+
 <h1>Creation</h1>
 
 <%= "Id: " %>
@@ -5,10 +7,17 @@
 <%= "name: " %>
 <%= @creation.name %><br>
 <%= "image: "%><br>
-<% @creation.pictures.each do |p| %>
-   <div class="col-md-3 images_1_of_4">
-     <div class="fancyDemo">
-        <%= image_tag p.image.url, size:"150x150" %> 
-     </div>
-   </div>
-<% end %>
+
+<div class="grids_of_4 row">
+       
+        <% @creation.pictures.each do |p| %>
+          <div class="col-md-3 images_1_of_4">
+            <div class="fancyDemo">
+              <a rel="group" title="" href=<%= p.image.url %>><%= image_tag p.image.url, class: "img-responsive" %></a>
+            </div>
+          </div>
+        <% end %>
+
+</div>
+
+<%= render 'shared/footnav' %>

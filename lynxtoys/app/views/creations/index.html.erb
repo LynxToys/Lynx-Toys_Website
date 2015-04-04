@@ -1,9 +1,8 @@
+<%= render 'shared/topnav' %>
+
 <div class="container"><!-- start main -->
   <div class="main row">
     <h2 class="style">Explore the creations from our community</h2>
-     <div class="grids_of_4 row">
-        
-      </div>
      <div class="grids_of_4 row">
        
         <% @creations.each do |creation| %>
@@ -50,3 +49,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'shared/footnav' %>
