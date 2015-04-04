@@ -14,10 +14,19 @@ class CreationsController < ApplicationController
   
   def create
     @creation = Creation.new(creation_params)
-    if @creation.save
-      redirect_to(:action => 'index')
-    else
-      render('new')
+    respond_to do |format|
+	if @creation.save
+		if params[:images]
+	 	  params[:images].each { |image|
+			@creation.pictures.create(image: image)
+		  }
+		end
+		format.html { redirect_to @creation, notice: 'Greation was successfully created.' }
+      		format.json { render json: @creation, status: :created, location: @creation }
+	else
+		format.html { render action: "new" }
+	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
+	end
     end
   end
   
@@ -37,6 +46,6 @@ class CreationsController < ApplicationController
   private
   
   def creation_params
-	params.require(:creation).permit(:name, :image)
+	params.require(:creation).permit(:name)
   end
 end
