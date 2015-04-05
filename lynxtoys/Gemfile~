@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -16,7 +17,7 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'haml-rails', '= 0.9.0'
 gem 'tzinfo-data'
-gem 'paperclip'
+gem 'paperclip', "~> 4.2"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -47,3 +48,12 @@ group :development, :test do
   gem 'spring'
 end
 
+# add to end of Gemfile
+group :test, :development do
+  gem 'sqlite3'
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels' # some pre-fabbed step definitions  
+  gem 'database_cleaner' # to clear Cucumber's test database between runs
+  gem 'capybara'         # lets Cucumber pretend to be a web browser
+  gem 'launchy'          # a useful debugging aid for user stories
+end
