@@ -8,11 +8,7 @@
         <% @creations.each do |creation| %>
           <div class="col-md-3 images_1_of_4">
             <div class="fancyDemo">
-              <a rel="group" title="" href=<%= creation_path(creation) %>>
-		<% unless creation.pictures.empty? %>
- 		  <%= image_tag creation.pictures[0].image.url, class: "img-responsive" %>
-                <% end %>
-	      </a>
+              <a rel="group" title="" href=<%= creation_path(creation) %>><%= image_tag creation.pictures[0].image.url, class: "img-responsive" %></a>
             </div>
              <p class="para"><%= creation.name %></p>
              <h4><%= link_to 'Show', creation %></h4>
