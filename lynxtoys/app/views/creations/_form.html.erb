@@ -1,7 +1,12 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
+<<<<<<< HEAD
+  <%#= f.text_field :name, :required => true, :class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
+	<%= f.text_field :name, :required => true, :class => 'text_field',:value => "Name (Required)"%>
+=======
   <%= f.text_field :name, {:class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" ,required: true} %>
 
+>>>>>>> e073bc5b0d62f6d8be4e834701e9cd4df821ca53
   <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
 
   <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
@@ -15,7 +20,7 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
+      <%= file_field_tag "images[]", type: :file, id: 'fileToUpload', :onchange => "check_file()", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
   <div class="recaptcha_area">
@@ -29,6 +34,7 @@
 <% end %>
 
 <script>
+<<<<<<< HEAD
 $(document).ready(function(){
     $("input").focus(function(){
         $(this).css("background-color", "#cccccc");
@@ -38,3 +44,18 @@ $(document).ready(function(){
     });
 });
 </script>
+=======
+function check_file(){
+                selection=document.getElementById('fileToUpload');
+				//window.alert(selection)
+        for (var i=0; i<selection.files.length; i++) {
+    var ext = selection.files[i].name.substr(selection.files[i].name.lastIndexOf('.')+1).toLowerCase();
+    if(ext!== "jpg" && ext!== "jpeg" && ext!== "png" && ext!== "gif") {
+        alert('only support jpg/jpeg/png/gif format');
+		document.getElementById('fileToUpload').value='';
+        return false;
+    }
+    }
+	}
+</script>
+>>>>>>> c17bc8f5cebe03ad431167d25f6dfec9012b19b7
