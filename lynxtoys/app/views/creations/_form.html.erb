@@ -1,8 +1,8 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.text_field :name, :class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
+  <%= f.text_field :name, :class => 'text_field', :value => "Name (Required)", :required => true, :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
 
-  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name (Required)';}" %>
+  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
 
   <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
 
@@ -15,7 +15,7 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, multiple: true, style: 'font-size: 200%; background-color: white' %>
+      <%= file_field_tag "images[]", type: :file, multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
 
@@ -25,3 +25,14 @@
                 creations_path, :class => 'btn btn-mini' %>
   </div>
 <% end %>
+
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+});
+</script>
