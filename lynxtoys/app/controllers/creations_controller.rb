@@ -14,24 +14,25 @@ class CreationsController < ApplicationController
   
   def create
     @creation = Creation.new(creation_params)
-    captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
-    if !verify_recaptcha(model: @creation, message: captcha_message, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
-      render "new"
+    if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
+      flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
+      redirect_to new_creation_path
     else
-       respond_to do |format|
+        flash[:notice] = 'Greation was successfully created.'
+        respond_to do |format|
           if @creation.save
-		if params[:images]
-	 	  params[:images].each { |image|
-			@creation.pictures.create(image: image)
-		  }
-		end
-		format.html { redirect_to @creation, notice: 'Greation was successfully created.' }
-      		format.json { render json: @creation, status: :created, location: @creation }
-	  else
-		format.html { render action: "new" }
-	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
-	  end
-       end
+        		if params[:images]
+        	 	  params[:images].each { |image|
+        			@creation.pictures.create(image: image)
+        		  }
+        		end
+        		format.html { redirect_to @creation }
+            format.json { render json: @creation, status: :created, location: @creation }
+      	  else
+      		format.html { render action: "new" }
+      	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
+      	  end
+      end
     end
 
   end

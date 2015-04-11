@@ -1,6 +1,6 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.label :name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+  <%= f.label "Name (required)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
   <%= f.text_field :name, required: true, :style => 'background-color: #474747' %>
 
@@ -13,7 +13,7 @@
   <%= f.text_field :description, :style => 'background-color: #474747' %>
 
   <div class="control-group">
-    <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= f.label "Pictures (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection

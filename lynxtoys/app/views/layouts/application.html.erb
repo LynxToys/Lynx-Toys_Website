@@ -83,6 +83,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <div id="wrap">
   <div id="main">
+  <% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:warning] %>
+    <div class="warning"><%= flash[:warning] %></div>
+  <% end %>
   <%= yield %>
   </div>
 </div>
