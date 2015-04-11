@@ -2,15 +2,15 @@
 
   <%= f.label :name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
-  <%= f.text_field :name, required: true %>
+  <%= f.text_field :name, required: true, :style => 'background-color: #474747' %>
 
   <%= f.label :creator_name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
-  <%= f.text_field :creator_name %>
+  <%= f.text_field :creator_name, :style => 'background-color: #474747' %>
 
   <%= f.label :description, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
-  <%= f.text_field :description %>
+  <%= f.text_field :description, :style => 'background-color: #474747' %>
 
   <div class="control-group">
     <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
@@ -38,7 +38,7 @@ $(document).ready(function(){
         $(this).css("background-color", "#cccccc");
     });
     $("input").blur(function(){
-        $(this).css("background-color", "#ffffff");
+        $(this).css("background-color", "#474747");
     });
 });
 </script>
