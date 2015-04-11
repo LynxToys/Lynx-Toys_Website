@@ -21,10 +21,12 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
+      <%= file_field_tag "images[]", type: :file, id: 'fileToUpload', :onchange => "check_file()", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
-
+  <div class="recaptcha_area">
+     <%= recaptcha_tags %>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -41,4 +43,16 @@ $(document).ready(function(){
         $(this).css("background-color", "#474747");
     });
 });
+function check_file(){
+                selection=document.getElementById('fileToUpload');
+				//window.alert(selection)
+        for (var i=0; i<selection.files.length; i++) {
+    var ext = selection.files[i].name.substr(selection.files[i].name.lastIndexOf('.')+1).toLowerCase();
+    if(ext!== "jpg" && ext!== "jpeg" && ext!== "png" && ext!== "gif") {
+        alert('only support jpg/jpeg/png/gif format');
+		document.getElementById('fileToUpload').value='';
+        return false;
+    }
+    }
+	}
 </script>

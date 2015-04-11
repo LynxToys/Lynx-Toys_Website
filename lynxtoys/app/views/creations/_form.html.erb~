@@ -1,25 +1,13 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
+  <%= f.text_field :name, {:class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" ,required: true} %>
+
+  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
+
+  <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
+
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :creator_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :creator_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :creator_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :creator_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :pictures, :class => 'control-label' %>
+    <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection
@@ -27,13 +15,24 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, multiple: true %>
+      <%= file_field_tag "images[]", type: :file, multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
-
+  <%= recaptcha_tags %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 creations_path, :class => 'btn btn-mini' %>
   </div>
 <% end %>
+
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });
+});
+</script>
