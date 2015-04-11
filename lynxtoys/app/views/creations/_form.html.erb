@@ -1,13 +1,19 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%#= f.text_field :name, :required => true, :class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
-	<%= f.text_field :name, :required => true, :class => 'text_field',:value => "Name (Required)"%>
-  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
+  <%= f.label "Name (required)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
-  <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
+  <%= f.text_field :name, required: true, :style => 'background-color: #474747' %>
+
+  <%= f.label :creator_name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+
+  <%= f.text_field :creator_name, :style => 'background-color: #474747' %>
+
+  <%= f.label :description, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+
+  <%= f.text_field :description, :style => 'background-color: #474747' %>
 
   <div class="control-group">
-    <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= f.label :pictures, :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection
@@ -20,7 +26,9 @@
 	  <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
-
+  <div class="recaptcha_area">
+     <%= recaptcha_tags %>
+  </div>
   <div class="form-actions">
     <%= f.submit "Submit Creation", :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -29,6 +37,14 @@
 <% end %>
 
 <script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });
+    $("input").blur(function(){
+        $(this).css("background-color", "#474747");
+    });
+});
 function check_file(id){
                 selection=document.getElementById(id);
 				//window.alert(selection)
