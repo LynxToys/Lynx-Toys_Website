@@ -37,6 +37,11 @@ When /^(.*) within (.*[^:])$/ do |step, parent|
 end
 
 # Multi-line step scoper
+When /^I upload some pictures$/ do
+  attach_file('images[]', File.join(Rails.root, 'features', 'upload', 'test01.jpg'))
+  click_button "Submit Creation"
+end
+
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end

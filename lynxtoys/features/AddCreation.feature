@@ -7,5 +7,5 @@ Scenario: Add a creation
   When I fill in "creation[name]" with "Awesome creation"
   And I fill in "creation[creator_name]" with "Alice"
   And I fill in "creation[description]" with "A Dragon"
-  And I press "Create Creation"
+  When I upload some pictures
   Then I should be on the show page of the new creation 
