@@ -12,7 +12,7 @@ class CreationsController < ApplicationController
 	@creation = Creation.new
   end
   
- def create
+  def create
     #byebug
 	@creation = Creation.new(creation_params)
     respond_to do |format|
