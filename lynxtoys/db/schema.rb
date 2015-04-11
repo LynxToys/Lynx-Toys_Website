@@ -16,6 +16,18 @@ ActiveRecord::Schema.define(version: 20150411214345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "covers", force: :cascade do |t|
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "creation_id"
+  end
+
+  add_index "covers", ["creation_id"], name: "index_covers_on_creation_id", using: :btree
+
   create_table "creations", force: :cascade do |t|
     t.string   "name"
     t.string   "creator_name"

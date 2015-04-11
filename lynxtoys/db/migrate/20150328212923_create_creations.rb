@@ -5,7 +5,8 @@ class CreateCreations < ActiveRecord::Migration
 	t.string :creator_name
 	t.string :description
 	t.integer :likes
-	t.timestamps null: false
+	#timestamp
     end
+	add_attachment :creations, :cover
   end
 end

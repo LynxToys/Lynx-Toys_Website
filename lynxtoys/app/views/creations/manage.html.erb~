@@ -10,7 +10,7 @@
               <a rel="group" title="" href=<%= p.image.url %>><%= image_tag p.image.url, class: "img-responsive" %></a>
 				<p class="para"><%= @creation.name %></p>
              <h4><%= link_to 'Show', @creation %></h4>
-             <h4><%= link_to 'Accept', creations_accept_path(@creation)%></h4>
+             <h4><%= link_to 'Accept', creations_accept_path(@creation) %></h4>
              <h4><%= link_to 'Reject', creations_delete_path(@creation) %></h4>
             </div>
           </div>

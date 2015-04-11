@@ -1,19 +1,13 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.label "Name (required)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+  <%#= f.text_field :name, :required => true, :class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
+	<%= f.text_field :name, :required => true, :class => 'text_field',:value => "Name (Required)"%>
+  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
 
-  <%= f.text_field :name, required: true, :style => 'background-color: #474747' %>
-
-  <%= f.label :creator_name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
-
-  <%= f.text_field :creator_name, :style => 'background-color: #474747' %>
-
-  <%= f.label :description, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
-
-  <%= f.text_field :description, :style => 'background-color: #474747' %>
+  <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
 
   <div class="control-group">
-    <%= f.label "Pictures (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection
@@ -21,12 +15,12 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, id: 'fileToUpload', :onchange => "check_file()", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
+      <%= file_field_tag "images[]", type: :file, id: 'ImagesToUpload', :onchange => "check_file('ImagesToUpload')", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
+	  <%= f.label :cover, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+	  <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
-  <div class="recaptcha_area">
-     <%= recaptcha_tags %>
-  </div>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
@@ -35,22 +29,14 @@
 <% end %>
 
 <script>
-$(document).ready(function(){
-    $("input").focus(function(){
-        $(this).css("background-color", "#cccccc");
-    });
-    $("input").blur(function(){
-        $(this).css("background-color", "#474747");
-    });
-});
-function check_file(){
-                selection=document.getElementById('fileToUpload');
+function check_file(id){
+                selection=document.getElementById(id);
 				//window.alert(selection)
         for (var i=0; i<selection.files.length; i++) {
     var ext = selection.files[i].name.substr(selection.files[i].name.lastIndexOf('.')+1).toLowerCase();
     if(ext!== "jpg" && ext!== "jpeg" && ext!== "png" && ext!== "gif") {
         alert('only support jpg/jpeg/png/gif format');
-		document.getElementById('fileToUpload').value='';
+		document.getElementById(id).value='';
         return false;
     }
     }
