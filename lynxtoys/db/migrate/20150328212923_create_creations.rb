@@ -5,7 +5,7 @@ class CreateCreations < ActiveRecord::Migration
 	t.string :creator_name
 	t.string :description
 	t.integer :likes
-	#timestamp
+	t.timestamps null: false
     end
   end
 end
