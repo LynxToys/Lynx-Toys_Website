@@ -1,10 +1,16 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.text_field :name, {:class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" ,required: true} %>
+  <%= f.label :name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
-  <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
+  <%= f.text_field :name, required: true %>
 
-  <%= f.text_field :description, :class => 'text_field', :value => "Description", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Description';}" %>
+  <%= f.label :creator_name, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+
+  <%= f.text_field :creator_name %>
+
+  <%= f.label :description, :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+
+  <%= f.text_field :description %>
 
   <div class="control-group">
     <%= f.label :pictures, :class => 'control-label', :style => 'font-size: 200%; color: white' %>
