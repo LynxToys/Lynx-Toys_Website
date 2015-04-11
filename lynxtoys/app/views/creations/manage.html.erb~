@@ -1,23 +1,18 @@
 
-
-<%= render 'shared/topnav' %>
-
+       <h4><%= link_to 'Accept', creations_accept_path(@creation) %>
+		&nbsp&nbsp&nbsp&nbsp<%= link_to 'Reject', creations_delete_path(@creation) %></h4>
+       <h4></h4>
+		<h4><%= "Creation Name: "+@creation.name %></h4>
 <div class="grids_of_4 row">
-       
         <% @creation.pictures.each do |p| %>
           <div class="col-md-3 images_1_of_4">
             <div class="fancyDemo">
               <a rel="group" title="" href=<%= p.image.url %>><%= image_tag p.image.url, class: "img-responsive" %></a>
-				<p class="para"><%= @creation.name %></p>
-             <h4><%= link_to 'Show', @creation %></h4>
-             <h4><%= link_to 'Accept', creations_accept_path(@creation) %></h4>
-             <h4><%= link_to 'Reject', creations_delete_path(@creation) %></h4>
             </div>
           </div>
         <% end %>
 
 </div>
 
-<%= render 'shared/footnav' %>
 
 
