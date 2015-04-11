@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   
+  resources :creations
+
   get 'creations/new' => 'creations#new'
 
   get 'welcome/index'
   root 'welcome#index'
-  resources :creations
-
   get 'creations/index' => 'creations#index'
-
+  get 'creations/:id/delete' => 'creations#delete', :as => :creations_delete
+  get 'securemanage_lynxtoys/:id/manage' => 'creations#manage', :as => :creations_manage
+  post 'securemanage_lynxtoys/:id/accept' => 'creations#accept', :as => :creations_accept
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

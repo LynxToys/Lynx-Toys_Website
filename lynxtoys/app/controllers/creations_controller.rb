@@ -33,6 +33,17 @@ class CreationsController < ApplicationController
   def show
 	@creation = Creation.find(params[:id])
   end
+
+  def manage
+	@creation = Creation.find(params[:id])
+  end
+  
+  def accept
+	@creation = Creation.find(params[:id])
+	@creation.isAc = 1
+	@creation.save
+	redirect_to creations_path
+  end
  
   def delete
     @creation = Creation.find(params[:id])

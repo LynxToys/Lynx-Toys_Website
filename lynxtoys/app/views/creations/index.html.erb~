@@ -6,20 +6,19 @@
      <div class="grids_of_4 row">
        
         <% @creations.each do |creation| %>
+		 <% if creation.isAc ==1 %>
           <div class="col-md-3 images_1_of_4">
             <div class="fancyDemo">
               <a rel="group" title="" href=<%= creation_path(creation) %>>
-		<% if creation.pictures.empty? %>
- 		  <%= image_tag creation.pictures[0].image.url, class: "img-responsive" %>
-                <% end %>
-	      </a>
-            </div>
-             <p class="para"><%= creation.name %></p>
-             <h4><%= link_to 'Show', creation %></h4>
-             <h4><%= link_to 'Edit', edit_creation_path(creation) %></h4>
-             <h4><%= link_to 'Delete', creations_delete_path(creation) %></h4>
+					<% unless creation.pictures.empty? %>
+			 		  <%= image_tag creation.pictures[0].image.url, class: "img-responsive" %>
+							<% end %>
+	     		</a>
+				<p class="para"><%= creation.name %></p>
+			 
+            </div> 
           </div>
-      
+		<% end %>
         <% end %>
         
       </div>
