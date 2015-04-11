@@ -12,6 +12,7 @@ body {
 	font-family: 'open_sansregular';
 	background:#ffffff;
 	font-size: 100%;
+	padding-bottom: 70px;
 }
 /* start header */
 .header_bg{
@@ -274,9 +275,6 @@ nav a#pull {
 /* start footer */
 .footer_bg{
 	background: #353535;
-}
-.footer{
-	padding: 4%;
 }
 .contact_left h3{
 	font-family: 'Kreon', serif;
@@ -924,4 +922,44 @@ h2.style{
 		width: 40px;
 		height: 40px;
 	}
+}
+
+html, body {
+  height: 100%;
+}
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+	margin-top: -150px;
+	margin-left: 0px;
+	margin-right: 0px;
+  position: relative;
+  height: 150px;
+  clear:both;
+  padding-top:60px;
+  background: #222222;
+} 
+
+.notice {
+	background: greenyellow;
+  font-size: 20px;
+  margin: 4% 0 0;
+  padding: 4px;
+  text-align: left;
+}
+
+.warning {
+  background: rosybrown;
+  font-size: 20px;
+  margin: 4% 0 0;
+  padding: 4px;
+  text-align: left;
 }
