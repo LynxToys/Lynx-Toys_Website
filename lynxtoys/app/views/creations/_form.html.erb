@@ -1,6 +1,6 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.text_field :name, :class => 'text_field', :value => "Name (Required)", :required => true, :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" %>
+  <%= f.text_field :name, {:class => 'text_field', :value => "Name (Required)", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Name (Required)';}" ,required: true} %>
 
   <%= f.text_field :creator_name, :class => 'text_field', :value => "Creator Name", :onfocus => "this.value = '';", :onblur => "if (this.value == '') {this.value = 'Creator Name';}" %>
 

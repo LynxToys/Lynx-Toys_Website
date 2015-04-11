@@ -1,5 +1,4 @@
 class AddImageToProjects < ActiveRecord::Migration
-=begin  
   def self.up
 	add_attachment :creations, :image
 	#add_column :creations, :image_file_name, :string
@@ -15,5 +14,4 @@ class AddImageToProjects < ActiveRecord::Migration
 	#remove_column :creations, :image_file_size, :integer
 	#remove_column :creations, :image_uploaded_at, :datetime
   end
-=end
 end

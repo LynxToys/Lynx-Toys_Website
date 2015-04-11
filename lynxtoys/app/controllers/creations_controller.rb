@@ -35,7 +35,7 @@ class CreationsController < ApplicationController
   end
  
   def delete
-	  @creation = Creation.find(params[:id])
+    @creation = Creation.find(params[:id])
     @creation.destroy
     flash[:notice] = "Creation '#{@creation.name}' deleted."
     redirect_to creations_path
