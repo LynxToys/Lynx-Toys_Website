@@ -60,6 +60,8 @@ group :test, :development do
   gem 'rspec-rails'      # Add rspec-rails to the Gemfile
 end
 
+gem 'recaptcha'
+gem 'bcrypt'
 
 
 

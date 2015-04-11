@@ -38,6 +38,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     arel (6.0.0)
+    bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -175,6 +177,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+    recaptcha (0.4.0)
     ref (1.0.5)
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
@@ -251,6 +254,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt
   capybara
   coffee-rails (~> 4.1.0)
   cucumber-rails
@@ -267,6 +271,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.0)
   rails_12factor
+  recaptcha
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

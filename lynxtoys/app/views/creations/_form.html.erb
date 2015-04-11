@@ -18,7 +18,9 @@
       <%= file_field_tag "images[]", type: :file, multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
-
+  <div class="recaptcha_area">
+     <%= recaptcha_tags %>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
