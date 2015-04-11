@@ -9,7 +9,7 @@ class CreationsController < ApplicationController
   end
   
   def new
-	@creation = Creation.new
+    @creation = Creation.new
   end
   
   def create

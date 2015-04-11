@@ -1,3 +1,6 @@
+<h4><%= "Creation Name: "+@creation.name%></h4>
+<h4><%= "Creator Name: "+@creation.creator_name%></h4>
+<h4><%= "Description: "+@creation.description%></h4>
 <div class="grids_of_4 row">
        
   <% @creation.pictures.each do |p| %>
@@ -7,5 +10,4 @@
       </div>
     </div>
   <% end %>
-
 </div>
