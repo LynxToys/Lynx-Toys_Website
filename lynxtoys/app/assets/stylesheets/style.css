@@ -12,7 +12,6 @@ body {
 	font-family: 'open_sansregular';
 	background:#ffffff;
 	font-size: 100%;
-	padding-bottom: 70px;
 }
 /* start header */
 .header_bg{
@@ -925,28 +924,33 @@ h2.style{
 }
 
 html, body {
+	margin: 0;
+	padding:0;
   height: 100%;
 }
 
-#wrap {
+#wrapper {
   min-height: 100%;
+  position:relative;
 }
 
-#main {
-  overflow:auto;
-  padding-bottom:150px; /* this needs to be bigger than footer height*/
+#header {
+	padding:10px;
 }
 
-.footer {
-	margin-top: -150px;
-	margin-left: 0px;
-	margin-right: 0px;
-  position: relative;
-  height: 150px;
-  clear:both;
-  padding-top:60px;
-  background: #222222;
-} 
+#content {
+	padding-bottom:100px; /* Height of the footer element */
+}
+
+#footer {
+	background:#222222;
+	width:100%;
+	height:100px;
+  padding-top:35px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
 
 .notice {
 	background: greenyellow;

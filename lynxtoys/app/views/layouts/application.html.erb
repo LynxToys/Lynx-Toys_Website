@@ -61,6 +61,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body>
 
+<div id="wrapper">
+
+<div id="header">
+    
 <div class="header_bg" id="home"><!-- start header -->
 <div class="container">
   <div class="row header text-center specials">
@@ -81,8 +85,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 </div>
 
-<div id="wrap">
-  <div id="main">
+</div><!-- #header -->
+
+<div id="content">
+
   <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
   <% end %>
@@ -90,33 +96,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="warning"><%= flash[:warning] %></div>
   <% end %>
   <%= yield %>
-  </div>
-</div>
+  
+</div><!-- #content -->
 
-<div class="footer">
+<div id="footer">
   <div class="copy text-center">
     <p class="link"><span>Lynx Toys &#169; All rights reserved | Template by&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></span></p>
     <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
   </div>
-</div>
-    <script type="text/javascript">
-        $(function() {
-          $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      
-              var target = $(this.hash);
-              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-              if (target.length) {
-                $('html,body').animate({
-                  scrollTop: target.offset().top
-                }, 1000);
-                return false;
-              }
-            }
-          });
-        });
-    </script>
-    <!---- start-smoth-scrolling---->   
+</div><!-- #footer -->
+
+<script type="text/javascript">
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+  
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+</script>
+<!---- start-smooth-scrolling----> 
+
+</div><!-- #wrapper -->  
+
 </body>
 
 </html>
