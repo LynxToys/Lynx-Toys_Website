@@ -39,6 +39,7 @@ class CreationsController < ApplicationController
       	end
       end
     end
+	ManageMailer.sample_email(@creation).deliver
   end
   
   def show
