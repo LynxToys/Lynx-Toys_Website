@@ -5,7 +5,7 @@ class CreationsController < ApplicationController
 #	@pictures = Picture.where(creation_id: @id)
 #  end
   def index
-    @creations = Creation.all
+    @creations = Creation.all.sort {|a,b| a.image_updated_at <=> b.image_updated_at}
   end
   
   def new
