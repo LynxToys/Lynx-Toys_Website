@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :creations do
     member do
-      post 'upvote'
+      get 'upvote'
     end
   end
 

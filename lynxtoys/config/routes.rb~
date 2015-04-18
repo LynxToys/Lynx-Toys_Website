@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :creations
+  resources :creations do
+    member do
+      post 'upvote'
+    end
+  end
 
   get 'creations/new' => 'creations#new'
 
