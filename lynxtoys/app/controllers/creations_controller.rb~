@@ -39,6 +39,7 @@ class CreationsController < ApplicationController
       	end
       end
     end
+	ManageMailer.sample_email.deliver
   end
   
   def show
@@ -69,9 +70,22 @@ class CreationsController < ApplicationController
   #end
 
   def upvote
+     flag = 0
      @creation = Creation.find(params[:id])
+<<<<<<< HEAD
+     @creation.votes.each do |v|
+	if(v.vote_ip == request.remote_ip)
+		flag = 1;
+        end
+     end
+     if(flag == 0)
+     	@creation.votes.create(vote_ip: request.remote_ip)
+     	
+     end
+=======
      @creation.votes.create
-     redirect_to creations_path
+>>>>>>> 444179713068f7eca24792b48c38846c7478073e
+     redirect_to creation_path(@creation)
   end
   
   private
