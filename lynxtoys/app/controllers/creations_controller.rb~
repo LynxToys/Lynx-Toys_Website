@@ -68,6 +68,12 @@ class CreationsController < ApplicationController
 	#Creation.find(params[:id]).destroy
 	#redirect_to(:action => 'index')
   #end
+
+  def upvote
+     @creation = Creation.find(params[:id])
+     @creation.votes.create
+     redirect_to creations_path
+  end
   
   private
   
