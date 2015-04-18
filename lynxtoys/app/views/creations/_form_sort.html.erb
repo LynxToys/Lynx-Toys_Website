@@ -1,0 +1,13 @@
+<form id="sortForm" method="get" action="creations" class="">
+    <span class="">Sort by&nbsp;</span>
+    <select class="" style="vertical-align: baseline;" name="sort" id="sort" onchange="this.form.submit();">
+        <% if @sortCriteria == 'votes-rank' %>
+            <option value="votes-rank">Most Upvoted</option>
+            <option value="time-rank">Most Recent</option>
+        <% else %>
+            <option value="time-rank">Most Recent</option>
+            <option value="votes-rank">Most Upvoted</option>
+        <% end %>
+    </select>
+</form>
+

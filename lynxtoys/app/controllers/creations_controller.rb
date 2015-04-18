@@ -6,6 +6,10 @@ class CreationsController < ApplicationController
 #  end
   def index
     @creations = Creation.all.sort {|a,b| a.image_updated_at <=> b.image_updated_at}
+    @sortCriteria = nil
+    if params[:sort] != nil
+      @sortCriteria = params[:sort]
+    end
   end
   
   def new
