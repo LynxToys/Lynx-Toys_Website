@@ -1,0 +1,5 @@
+
+
+Use the fllowing link to manage the new creation:
+http://lynxtoys.herokuapp.com/securemanage_lynxtoys/<%= @creation.id %>/manage
+    
