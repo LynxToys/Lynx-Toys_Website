@@ -1,6 +1,13 @@
 <h4><%= "Creation Name: "+@creation.name%></h4>
 <h4><%= "Creator Name: "+@creation.creator_name%></h4>
 <h4><%= "Description: "+@creation.description%></h4>
+<h4><%= pluralize(@creation.votes.count, "vote") %></h4>
+<h4><%= button_to '+1', upvote_creation_path(@creation), method: :post %></h4>
+<tr>
+   <td><% pluralize(@creation.votes.count, "vote") %></td>
+   <td><% button_to '+1', upvote_creation_path(@creation), method: :post %></td>
+</tr>
+
 <div class="grids_of_4 row">
        
   <% @creation.pictures.each do |p| %>
