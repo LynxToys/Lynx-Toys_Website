@@ -1,5 +1,6 @@
 class Creation<ActiveRecord::Base
     has_many :pictures, :dependent=>:destroy
+    has_many :votes, :dependent=>:destroy
     #before_destroy :ensure_not_referenced_by_any_picture
 	has_one :cover, :dependent=>:destroy
     #has_attached_file :image

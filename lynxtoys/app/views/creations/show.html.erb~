@@ -14,7 +14,6 @@
     <div class="col-md-3 images_1_of_4">
       <div class="fancyDemo">
         <a rel="group" title="" href=<%= p.image.url %>><%= image_tag p.image.url, class: "img-responsive" %></a>
-        <%= p.image.url%>
       </div>
     </div>
   <% end %>
