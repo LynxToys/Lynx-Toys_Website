@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20150418173529) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "isAc",               default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "pictures", force: :cascade do |t|

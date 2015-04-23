@@ -6,6 +6,15 @@ class CreationsController < ApplicationController
 #  end
   def index
     @creations = Creation.all
+    @sortCriteria = nil
+    if params[:sort] != nil
+      @sortCriteria = params[:sort]
+    end
+    if @sortCriteria == 'votes-rank'
+      @creations = @creations.sort {|a,b| b.votes.count <=> a.votes.count}
+    else
+      @creations = @creations.sort {|a,b| b.created_at <=> a.created_at}
+    end
   end
   
   def new
