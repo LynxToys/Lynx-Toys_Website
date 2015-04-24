@@ -6,6 +6,15 @@ class CreationsController < ApplicationController
 #  end
   def index
     @creations = Creation.all
+    @sortCriteria = nil
+    if params[:sort] != nil
+      @sortCriteria = params[:sort]
+    end
+    if @sortCriteria == 'votes-rank'
+      @creations = @creations.sort {|a,b| b.votes.count <=> a.votes.count}
+    else
+      @creations = @creations.sort {|a,b| b.created_at <=> a.created_at}
+    end
   end
   
   def new
@@ -32,14 +41,14 @@ class CreationsController < ApplicationController
       		@cover.creation_id=@creation.id
       		@cover.save
       		format.html { redirect_to @creation }
-          format.json { render json: @creation, status: :created, location: @creation }
+          	format.json { render json: @creation, status: :created, location: @creation }
       	else
       		format.html { render action: "new" }
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
       	end
+	ManageMailer.sample_email(@creation).deliver
       end
     end
-	ManageMailer.sample_email.deliver
   end
   
   def show
@@ -72,7 +81,6 @@ class CreationsController < ApplicationController
   def upvote
      flag = 0
      @creation = Creation.find(params[:id])
-<<<<<<< HEAD
      @creation.votes.each do |v|
 	if(v.vote_ip == request.remote_ip)
 		flag = 1;
@@ -80,11 +88,7 @@ class CreationsController < ApplicationController
      end
      if(flag == 0)
      	@creation.votes.create(vote_ip: request.remote_ip)
-     	
      end
-=======
-     @creation.votes.create
->>>>>>> 444179713068f7eca24792b48c38846c7478073e
      redirect_to creation_path(@creation)
   end
   

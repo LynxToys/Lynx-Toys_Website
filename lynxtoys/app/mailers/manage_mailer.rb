@@ -3,6 +3,6 @@ class ManageMailer < ApplicationMailer
 
     def sample_email(creation)
         @creation = creation
-        mail(:to => "lynxtoystest@gmail.com", :subject => 'Sample Email')
+        mail(:to => "lynxtoystest@gmail.com", :subject => @creation.name+' was created')
     end
 end
