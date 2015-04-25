@@ -25,7 +25,11 @@ class CreationsController < ApplicationController
   	@creation = Creation.new(creation_params)
 	@host = request.host
 	@port = request.port
-	@url = @host+":"+String(@port)
+	if @port == 443
+		@url = "https://"+@host
+	else
+		@url = "http://"+@host+":"+String(@port)
+	end
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
@@ -51,7 +55,9 @@ class CreationsController < ApplicationController
       	end	
       end
       ManageMailer.email_to_manager(@creation,@url).deliver
-	  ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  if @creation.email != nil
+	  	ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  end
     end
   end
   
@@ -69,8 +75,16 @@ class CreationsController < ApplicationController
 	@creation.save
 	@host = request.host
 	@port = request.port
-	@url = @host+":"+String(@port)
-	ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	@host = request.host
+	@port = request.port
+	if @port == 443
+		@url = "https://"+@host
+	else
+		@url = "http://"+@host+":"+String(@port)
+	end
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	end
 	redirect_to creations_path
   end
  
@@ -79,9 +93,17 @@ class CreationsController < ApplicationController
     @creation.destroy
 	@host = request.host
 	@port = request.port
-	@url = @host+":"+String(@port)
+	@host = request.host
+	@port = request.port
+	if @port == 443
+		@url = "https://"+@host
+	else
+		@url = "http://"+@host+":"+String(@port)
+	end
     flash[:notice] = "Creation '#{@creation.name}' deleted."
-	ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	end
     redirect_to creations_path
   end
 

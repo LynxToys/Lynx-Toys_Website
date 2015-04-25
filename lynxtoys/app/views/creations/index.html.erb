@@ -4,36 +4,33 @@
   <%=render 'form_sort' %>
 </h3>
   <div class="main row">
-     <div class="grids_of_4 row">
-       
-        <% @creations.each do |creation| %>
-		 <% if creation.isAc ==1 %>
+     <% count=-1 %>
+      <% @creations.each do |creation| %>
+        <% if creation.isAc ==1 %>
+          <% count=count+1 %>
+          <% if count%4==0 %>
+            <div class="grids_of_4 row">
+          <% end %>
           <div class="col-md-3 images_1_of_4">
             <div class="fancyDemo">
               <a rel="group" title="" href=<%= creation_path(creation) %>>
-					<% unless creation.cover.nil? %>
-			 		  <%= image_tag creation.cover.cover.url, class: "img-responsive" %>
-							<% end %>
-	     		</a>
-				<p class="para"><%= creation.name %></p>
+                 <% unless creation.cover.nil? %>
+                    <%= image_tag creation.cover.cover.url, class: "img-responsive" %>
+                 <% end %>
+              </a>
+              <p class="para"><%= creation.name %></p>
             </div> 
           </div>
-		<% end %>
+          <% if count%4==3 %>
+            </div>
+          <% end %>
+
         <% end %>
-        
-      </div>
-  </div>
-<a class="fancybox" href="http://fancyapps.com/fancybox/demo/1_b.jpg"><img src="http://fancyapps.com/fancybox/demo/1_s.jpg" alt=""/></a>
-
-<a class="fancybox" href="http://fancyapps.com/fancybox/demo/2_b.jpg"><img src="http://fancyapps.com/fancybox/demo/2_s.jpg" alt=""/></a>
-
-// Activate fancyBox
-$(".fancybox")
-    .attr('rel', 'gallery')
-    .fancybox({
-        padding : 0
-    });
 
 
-// Launch fancyBox on first element
-$(".fancybox").eq(0).trigger('click');
+      <% end %>
+
+      <% if count%4!=3 %>
+            </div>
+      <% end %>  
+>>>>>>> df9c7585b17ebcc477dc321901b22aa17b76e43d
