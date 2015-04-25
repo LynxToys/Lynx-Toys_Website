@@ -33,7 +33,10 @@ class CreationsController < ApplicationController
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
-    else
+    elsif @creation.email != nil and not is_a_valid_email?(@creation.email)
+		flash[:warning] = "Invalid email address.  Please input a valid email"
+      	redirect_to new_creation_path
+	else
       flash[:notice] = 'Creation was successfully uploaded and will be available for viewing once approved.'
       respond_to do |format|
       	if @creation.save
@@ -134,4 +137,7 @@ class CreationsController < ApplicationController
   def creation_params
 	params.require(:creation).permit(:name,:creator_name,:description,:likes,:email)
   end
+ def is_a_valid_email?(email)
+  email.match(/^[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/i) != nil
+ end
 end
