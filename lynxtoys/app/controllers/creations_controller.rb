@@ -23,6 +23,7 @@ class CreationsController < ApplicationController
   
   def create
   	@creation = Creation.new(creation_params)
+	
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
@@ -47,7 +48,8 @@ class CreationsController < ApplicationController
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
       	end	
       end
-      ManageMailer.sample_email(@creation).deliver
+      ManageMailer.email_to_manager(@creation).deliver
+	  ManageMailer.email_to_user(@creation,"created").deliver
     end
   end
   
@@ -63,6 +65,7 @@ class CreationsController < ApplicationController
 	@creation = Creation.find(params[:id])
 	@creation.isAc = 1
 	@creation.save
+	ManageMailer.email_to_user(@creation,"accepted").deliver
 	redirect_to creations_path
   end
  
@@ -70,6 +73,7 @@ class CreationsController < ApplicationController
     @creation = Creation.find(params[:id])
     @creation.destroy
     flash[:notice] = "Creation '#{@creation.name}' deleted."
+	ManageMailer.email_to_user(@creation,"rejected").deliver
     redirect_to creations_path
   end
 
