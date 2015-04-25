@@ -69,7 +69,11 @@ class CreationsController < ApplicationController
 	@creation.save
 	@host = request.host
 	@port = request.port
-	@url = @host+":"+String(@port)
+	if @port == 443
+		@url = "https://"+@host
+	else
+		@url = @host+":"+String(@port)
+	end
 	ManageMailer.email_to_user(@creation,"accepted",@url).deliver
 	redirect_to creations_path
   end
@@ -81,7 +85,7 @@ class CreationsController < ApplicationController
 	@port = request.port
 	@url = @host+":"+String(@port)
     flash[:notice] = "Creation '#{@creation.name}' deleted."
-	ManageMailer.email_to_user(@creation,"rejected").deliver
+	ManageMailer.email_to_user(@creation,"rejected",@url).deliver
     redirect_to creations_path
   end
 
