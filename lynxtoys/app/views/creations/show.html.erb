@@ -7,7 +7,7 @@
    <td><% pluralize(@creation.votes.count, "vote") %></td>
    <td><% button_to '+1', upvote_creation_path(@creation), method: :post %></td>
 </tr>
-
+<% count=0 %>
 <div class="grids_of_4 row">
   <div class="col-md-3 images_1_of_4">
     <div class="fancyDemo">
@@ -16,13 +16,23 @@
   </div>
        
   <% @creation.pictures.each do |p| %>
+    <% count=count+1 %>
+    <% if count%4==0 %>
+            <div class="grids_of_4 row">
+    <% end %>
     <div class="col-md-3 images_1_of_4">
       <div class="fancyDemo">
         <a rel="group" title="" href=<%= p.image.url %>><%= image_tag p.image.url, class: "img-responsive" %></a>
       </div>
     </div>
+    <% if count%4==3 %>
+      </div>
+    <% end %>
   <% end %>
-</div>
+<% if count%4!=3 %>
+  </div>
+<% end %>
+
 <h4><%= link_to image_tag("/images/upvote.jpg", size: "70x70"), upvote_creation_path(@creation) %>
 <%= pluralize(@creation.votes.count, "vote") %></h4>
 
