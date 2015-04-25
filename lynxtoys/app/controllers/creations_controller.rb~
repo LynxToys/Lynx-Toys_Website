@@ -45,9 +45,9 @@ class CreationsController < ApplicationController
       	else
       		format.html { render action: "new" }
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
-      	end
-	ManageMailer.sample_email(@creation).deliver
+      	end	
       end
+      ManageMailer.sample_email(@creation).deliver
     end
   end
   
@@ -88,6 +88,9 @@ class CreationsController < ApplicationController
      end
      if(flag == 0)
      	@creation.votes.create(vote_ip: request.remote_ip)
+	flash[:notice] = 'Thanks for your voting!'
+     else
+        flash[:notice] = 'Thanks for your voting!'
      end
      redirect_to creation_path(@creation)
   end
