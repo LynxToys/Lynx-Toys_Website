@@ -1,6 +1,6 @@
 <%= form_for @creation, :url => creations_path, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
 
-  <%= f.label "Name (required)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+  <%= f.label "Creation Name (required)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
 
   <%= f.text_field :name, required: true, :style => 'background-color: #474747' %>
 
@@ -12,11 +12,15 @@
 
   <%= f.text_field :description, :style => 'background-color: #474747' %>
 
+  <%= f.label "Email (to be notified for acceptance of creation)", :style => 'font-size: 200%; color: white; margin-bottom: -4%' %>
+
+  <%= f.text_field :email, :style => 'background-color: #474747' %>
+
   <div class="control-group">
-    <%= f.label "Cover (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= f.label "Main photo (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
     <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
-    
-    <%= f.label "Pictures (required)", :style => 'font-size: 200%; color: white' %>
+
+    <%= f.label "More photos", :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection
@@ -24,7 +28,7 @@
            for paperclip!!
            file_field_tag, since images is not a gallery attribute
        -->
-      <%= file_field_tag "images[]", type: :file, id: 'ImagesToUpload', :onchange => "check_file('ImagesToUpload')", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
+      <%= file_field_tag "images[]", type: :file, id: 'ImagesToUpload', :onchange => "check_file('ImagesToUpload')", multiple: true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
   <div class="recaptcha_area">
