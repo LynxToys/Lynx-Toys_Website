@@ -27,7 +27,7 @@ class CreationsController < ApplicationController
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
     else
-      flash[:notice] = 'Creation was successfully created.'
+      flash[:notice] = 'Creation was successfully uploaded and will be available for viewing once approved.'
       respond_to do |format|
       	if @creation.save
       		if params[:images]
@@ -41,14 +41,14 @@ class CreationsController < ApplicationController
       		@cover.creation_id=@creation.id
       		@cover.save
       		format.html { redirect_to @creation }
-          format.json { render json: @creation, status: :created, location: @creation }
+          	format.json { render json: @creation, status: :created, location: @creation }
       	else
       		format.html { render action: "new" }
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
-      	end
+      	end	
       end
+      ManageMailer.sample_email(@creation).deliver
     end
-	ManageMailer.sample_email(@creation).deliver
   end
   
   def show
@@ -88,6 +88,9 @@ class CreationsController < ApplicationController
      end
      if(flag == 0)
      	@creation.votes.create(vote_ip: request.remote_ip)
+	flash[:notice] = 'Thanks for your voting!'
+     else
+        flash[:notice] = 'You have voted this creation!'
      end
      redirect_to creation_path(@creation)
   end
