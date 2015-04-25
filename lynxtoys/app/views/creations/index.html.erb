@@ -1,5 +1,8 @@
 <h2 class="style">Explore the creations from our community</h2>
-<h3 style="text-align:right; margin: 2% 4% -2%;"><%= link_to 'New Creation', new_creation_path %><%=render 'form_sort' %></h3>
+<h3 style="margin: -2% 4% 2%;">
+  <span style='float: left;'><%= button_to 'New Creation', creations_new_path, :method => :get, :class => 'btn btn-primary btn-lg', :style => 'background: #2EB398;' %></span>
+  <%=render 'form_sort' %>
+</h3>
   <div class="main row">
      <div class="grids_of_4 row">
        
