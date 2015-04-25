@@ -55,7 +55,9 @@ class CreationsController < ApplicationController
       	end	
       end
       ManageMailer.email_to_manager(@creation,@url).deliver
-	  ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  if @creation.email != nil
+	  	ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  end
     end
   end
   
@@ -80,7 +82,9 @@ class CreationsController < ApplicationController
 	else
 		@url = "http://"+@host+":"+String(@port)
 	end
-	ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	end
 	redirect_to creations_path
   end
  
@@ -97,7 +101,9 @@ class CreationsController < ApplicationController
 		@url = "http://"+@host+":"+String(@port)
 	end
     flash[:notice] = "Creation '#{@creation.name}' deleted."
-	ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	end
     redirect_to creations_path
   end
 
