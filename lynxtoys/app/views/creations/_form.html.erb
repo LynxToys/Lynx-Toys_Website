@@ -17,10 +17,10 @@
   <%= f.text_field :email, :style => 'background-color: #474747' %>
 
   <div class="control-group">
-    <%= f.label "Main photo (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= f.label "Main Photo (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
     <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
 
-    <%= f.label "More photos", :style => 'font-size: 200%; color: white' %>
+    <%= f.label "More Photos", :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
       <!-- Use HTML5 multiple attribute to enable multiple selection

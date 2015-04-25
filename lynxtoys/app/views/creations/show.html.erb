@@ -9,6 +9,11 @@
 </tr>
 
 <div class="grids_of_4 row">
+  <div class="col-md-3 images_1_of_4">
+    <div class="fancyDemo">
+      <a rel="group" title="" href=<%= @creation.cover.cover.url %>><%= image_tag @creation.cover.cover.url, class: "img-responsive" %></a>
+    </div>
+  </div>
        
   <% @creation.pictures.each do |p| %>
     <div class="col-md-3 images_1_of_4">
