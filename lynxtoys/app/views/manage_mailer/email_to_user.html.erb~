@@ -11,12 +11,12 @@
 	  Thanks for using Lynxtoys product.
 	  <br/>
       You can use the following link to review your creation:
-      https://lynxtoys.herokuapp.com/creations/<%= @creation.id %>/
+      <%= @url %>/creations/<%= @creation.id %>/
 	  <br/>
 	  <br/>
 	  Thanks again for your great work.
       <br/>
-	  Best regards,
+	  Best regards,<br/>
 	  Lyntoys Product Team
     
     </p>
@@ -31,12 +31,12 @@
 	  <br/>
 	  Thanks again for using our product.
       <br/>
-	  Best regards,
+	  Best regards,<br/>
 	  Lyntoys Product Team
     
     </p>
 	<% elsif @action == "created"%>
-	<h1>Hi, we are sorry that your creation named <%= @creation.name %> has been rejected!</h1>
+	<h1>Hi, your creation named <%= @creation.name %> has been created!</h1>
     <p>
 	  We are very pleasure that you can join us.
 	  Thanks for using Lynxtoys product.
@@ -46,7 +46,7 @@
 	  <br/>
 	  Thanks again for using our product.
       <br/>
-	  Best regards,
+	  Best regards,<br/>
 	  Lyntoys Product Team
     
     </p>
