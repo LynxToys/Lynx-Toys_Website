@@ -41,14 +41,14 @@ class CreationsController < ApplicationController
       		@cover.creation_id=@creation.id
       		@cover.save
       		format.html { redirect_to @creation }
-          format.json { render json: @creation, status: :created, location: @creation }
+          	format.json { render json: @creation, status: :created, location: @creation }
       	else
       		format.html { render action: "new" }
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
-      	end
+      	end	
       end
+      ManageMailer.sample_email(@creation).deliver
     end
-	ManageMailer.sample_email(@creation).deliver
   end
   
   def show
