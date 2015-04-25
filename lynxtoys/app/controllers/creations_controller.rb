@@ -98,6 +98,6 @@ class CreationsController < ApplicationController
   private
   
   def creation_params
-	params.require(:creation).permit(:name,:creator_name,:description,:likes)
+	params.require(:creation).permit(:name,:creator_name,:description,:likes,:email)
   end
 end
