@@ -23,6 +23,7 @@ class CreationsController < ApplicationController
   
   def create
   	@creation = Creation.new(creation_params)
+	
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
@@ -101,6 +102,6 @@ class CreationsController < ApplicationController
   private
   
   def creation_params
-	params.require(:creation).permit(:name,:creator_name,:description,:likes)
+	params.require(:creation).permit(:name,:creator_name,:description,:likes,:email)
   end
 end
