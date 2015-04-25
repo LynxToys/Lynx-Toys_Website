@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+	<% if @creation.name == "accepted"%>
+    <h1>Hi, congratulations, your creation named <%= @creation.name %> has been accepted!</h1>
+    <p>
+	  We are very pleasure that you can join us.
+	  Thanks for using Lynxtoys product.
+	  </br>
+      You can use the following link to review your creation:
+      https://lynxtoys.herokuapp.com/creations/<%= @creation.id %>/
+	  </br>
+	  </br>
+	  Thanks again for your great work.
+      </br>
+	  Best regards,
+	  Lyntoys Product Team
+    
+    </p>
+	<% elsif @creation.name == "rejected"%>
+	<h1>Hi, we are sorry that your creation named <%= @creation.name %> has been rejected!</h1>
+    <p>
+	  We are very pleasure that you can join us.
+	  Thanks for using Lynxtoys product.
+	  </br>
+	  Please don't stop creating.
+	  </br>
+	  </br>
+	  Thanks again for using our product.
+      </br>
+	  Best regards,
+	  Lyntoys Product Team
+    
+    </p>
+	<% elsif @creation.name == "created"%>
+	<h1>Hi, we are sorry that your creation named <%= @creation.name %> has been rejected!</h1>
+    <p>
+	  We are very pleasure that you can join us.
+	  Thanks for using Lynxtoys product.
+	  </br>
+	  Please don't stop creating.
+	  </br>
+	  </br>
+	  Thanks again for using our product.
+      </br>
+	  Best regards,
+	  Lyntoys Product Team
+    
+    </p>
+	<%end%>
+  </body>
+</html>

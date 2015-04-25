@@ -47,7 +47,8 @@ class CreationsController < ApplicationController
       	      #format.json { render json: @creation.errors, status: :unprocessable_entity }
       	end	
       end
-      ManageMailer.sample_email(@creation).deliver
+      ManageMailer.email_to_manager(@creation).deliver
+	  ManageMailer.email_to_user(@creation,"created").deliver
     end
   end
   
@@ -63,6 +64,7 @@ class CreationsController < ApplicationController
 	@creation = Creation.find(params[:id])
 	@creation.isAc = 1
 	@creation.save
+	ManageMailer.email_to_user(@creation,"accepted").deliver
 	redirect_to creations_path
   end
  
@@ -70,6 +72,7 @@ class CreationsController < ApplicationController
     @creation = Creation.find(params[:id])
     @creation.destroy
     flash[:notice] = "Creation '#{@creation.name}' deleted."
+	ManageMailer.email_to_user(@creation,"rejected").deliver
     redirect_to creations_path
   end
 
