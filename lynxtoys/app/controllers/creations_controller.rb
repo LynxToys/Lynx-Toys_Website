@@ -88,6 +88,9 @@ class CreationsController < ApplicationController
      end
      if(flag == 0)
      	@creation.votes.create(vote_ip: request.remote_ip)
+	flash[:notice] = 'Thanks for your voting!'
+     else
+        flash[:notice] = 'You have voted this creation!'
      end
      redirect_to creation_path(@creation)
   end
