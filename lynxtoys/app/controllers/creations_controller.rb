@@ -27,7 +27,7 @@ class CreationsController < ApplicationController
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
     else
-      flash[:notice] = 'Creation was successfully created.'
+      flash[:notice] = 'Creation was successfully uploaded and will be available for viewing once approved.'
       respond_to do |format|
       	if @creation.save
       		if params[:images]

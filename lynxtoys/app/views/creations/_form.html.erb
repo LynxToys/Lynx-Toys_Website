@@ -13,6 +13,9 @@
   <%= f.text_field :description, :style => 'background-color: #474747' %>
 
   <div class="control-group">
+    <%= f.label "Cover (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
+    <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
+    
     <%= f.label "Pictures (required)", :style => 'font-size: 200%; color: white' %>
     <div class="controls">
       <!-- The magic is coming ...look at my eyes....shazammmm -->
@@ -22,8 +25,6 @@
            file_field_tag, since images is not a gallery attribute
        -->
       <%= file_field_tag "images[]", type: :file, id: 'ImagesToUpload', :onchange => "check_file('ImagesToUpload')", multiple: true, :required => true, style: 'font-size: 200%; background-color: white' %>
-	  <%= f.label "Cover (required)", :class => 'control-label', :style => 'font-size: 200%; color: white' %>
-	  <%= file_field_tag "cover", type: :file, id: 'CoverToUpload', :onchange => "check_file('CoverToUpload')", :required => true, style: 'font-size: 200%; background-color: white' %>
     </div>
   </div>
   <div class="recaptcha_area">
