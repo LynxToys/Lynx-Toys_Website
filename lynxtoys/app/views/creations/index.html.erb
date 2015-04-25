@@ -23,3 +23,17 @@
         
       </div>
   </div>
+<a class="fancybox" href="http://fancyapps.com/fancybox/demo/1_b.jpg"><img src="http://fancyapps.com/fancybox/demo/1_s.jpg" alt=""/></a>
+
+<a class="fancybox" href="http://fancyapps.com/fancybox/demo/2_b.jpg"><img src="http://fancyapps.com/fancybox/demo/2_s.jpg" alt=""/></a>
+
+// Activate fancyBox
+$(".fancybox")
+    .attr('rel', 'gallery')
+    .fancybox({
+        padding : 0
+    });
+
+
+// Launch fancyBox on first element
+$(".fancybox").eq(0).trigger('click');
