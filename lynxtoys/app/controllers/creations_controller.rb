@@ -33,7 +33,7 @@ class CreationsController < ApplicationController
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
-    elsif @creation.email != nil and not is_a_valid_email?(@creation.email)
+    elsif @creation.email != "" and not is_a_valid_email?(@creation.email)
 		flash[:warning] = "Invalid email address.  Please input a valid email"
       	redirect_to new_creation_path
 	else
@@ -58,7 +58,7 @@ class CreationsController < ApplicationController
       	end	
       end
       ManageMailer.email_to_manager(@creation,@url).deliver
-	  if @creation.email != nil
+	  if @creation.email != ""
 	  	ManageMailer.email_to_user(@creation,"created",@url).deliver
 	  end
     end
@@ -85,7 +85,7 @@ class CreationsController < ApplicationController
 	else
 		@url = "http://"+@host+":"+String(@port)
 	end
-	if @creation.email != nil
+	if @creation.email != ""
 		ManageMailer.email_to_user(@creation,"accepted",@url).deliver
 	end
 	redirect_to creations_path
@@ -104,7 +104,7 @@ class CreationsController < ApplicationController
 		@url = "http://"+@host+":"+String(@port)
 	end
     flash[:notice] = "Creation '#{@creation.name}' deleted."
-	if @creation.email != nil
+	if @creation.email != ""
 		ManageMailer.email_to_user(@creation,"rejected",@url).deliver
 	end
     redirect_to creations_path
