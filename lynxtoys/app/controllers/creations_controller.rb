@@ -33,7 +33,10 @@ class CreationsController < ApplicationController
     if !verify_recaptcha(model: @creation, private_key: "6LciMwUTAAAAAHFDUOFGVx58aY66C_Bw5FZQ6Yt7") 
       flash[:warning] = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
       redirect_to new_creation_path
-    else
+    elsif @creation.email != nil and not is_a_valid_email?(@creation.email)
+		flash[:warning] = "Invalid email address.  Please input a valid email"
+      	redirect_to new_creation_path
+	else
       flash[:notice] = 'Creation was successfully uploaded and will be available for viewing once approved.'
       respond_to do |format|
       	if @creation.save
@@ -55,7 +58,9 @@ class CreationsController < ApplicationController
       	end	
       end
       ManageMailer.email_to_manager(@creation,@url).deliver
-	  ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  if @creation.email != nil
+	  	ManageMailer.email_to_user(@creation,"created",@url).deliver
+	  end
     end
   end
   
@@ -80,13 +85,20 @@ class CreationsController < ApplicationController
 	else
 		@url = "http://"+@host+":"+String(@port)
 	end
-	ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"accepted",@url).deliver
+	end
 	redirect_to creations_path
   end
  
   def delete
     @creation = Creation.find(params[:id])
-    @creation.destroy
+    @creation.pictures.each do |picture|
+		picture.image=nil
+	end
+	@creation.cover=nil
+	@creation.save
+	@creation.destroy
 	@host = request.host
 	@port = request.port
 	@host = request.host
@@ -97,7 +109,9 @@ class CreationsController < ApplicationController
 		@url = "http://"+@host+":"+String(@port)
 	end
     flash[:notice] = "Creation '#{@creation.name}' deleted."
-	ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	if @creation.email != nil
+		ManageMailer.email_to_user(@creation,"rejected",@url).deliver
+	end
     redirect_to creations_path
   end
 
@@ -128,4 +142,7 @@ class CreationsController < ApplicationController
   def creation_params
 	params.require(:creation).permit(:name,:creator_name,:description,:likes,:email)
   end
+ def is_a_valid_email?(email)
+  email.match(/^[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/i) != nil
+ end
 end

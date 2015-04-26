@@ -28,9 +28,15 @@
 
         <% end %>
 
+
       <% end %>
 
       <% if count%4!=3 %>
             </div>
+<<<<<<< HEAD
       <% end %> 
 </html> 
+=======
+      <% end %>  
+
+>>>>>>> 6ee78b704da2cd97a8f5a9075601292227f5aac3
