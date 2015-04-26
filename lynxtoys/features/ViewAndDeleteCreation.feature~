@@ -11,3 +11,7 @@ Background:
   And I press "Submit Creation"
   Then I should be on the show page of the new creation 
 
+Scenario: View creation
+  When I follow "Community Collections"
+  When I follow "Show"
+  Then I should be on the Creation show page

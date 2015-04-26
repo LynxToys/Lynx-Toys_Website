@@ -93,7 +93,12 @@ class CreationsController < ApplicationController
  
   def delete
     @creation = Creation.find(params[:id])
-    @creation.destroy
+    @creation.pictures.each do |picture|
+		picture.image=nil
+	end
+	@creation.cover=nil
+	@creation.save
+	@creation.destroy
 	@host = request.host
 	@port = request.port
 	@host = request.host

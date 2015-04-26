@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150425154933) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "covers", force: :cascade do |t|
     t.string   "cover_file_name"
     t.string   "cover_content_type"
@@ -26,13 +23,17 @@ ActiveRecord::Schema.define(version: 20150425154933) do
     t.integer  "creation_id"
   end
 
-  add_index "covers", ["creation_id"], name: "index_covers_on_creation_id", using: :btree
+  add_index "covers", ["creation_id"], name: "index_covers_on_creation_id"
 
   create_table "creations", force: :cascade do |t|
     t.string   "name"
     t.string   "creator_name"
     t.string   "description"
     t.integer  "likes"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

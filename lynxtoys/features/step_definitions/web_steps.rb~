@@ -44,7 +44,7 @@ end
 
 When /^I want build New Creation$/ do
   has_button?("New Creation")
-  #click_button "New Creation" 
+  click_button "New Creation" 
   #find("New reation").click
 end
 

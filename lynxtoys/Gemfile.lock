@@ -93,6 +93,8 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    fancybox2-rails (0.2.8)
+      railties (>= 3.1.0, < 5.0)
     figaro (1.1.0)
       thor (~> 0.14)
     gherkin (2.12.2)
@@ -280,6 +282,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
+  fancybox2-rails
   figaro
   haml-rails (= 0.9.0)
   jbuilder (~> 2.0)

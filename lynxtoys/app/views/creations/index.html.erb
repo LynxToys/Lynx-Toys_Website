@@ -1,6 +1,7 @@
+<html>
 <h2 class="style">Explore the creations from our community</h2>
 <h3 style="margin: -2% 4% 2%;">
-  <span style='float: left;'><%= button_to 'New Creation', creations_new_path, :method => :get, :class => 'btn btn-primary btn-lg', :style => 'background: #2EB398;' %></span>
+  <span style='float: left;'><%= button_to "New Creation", creations_new_path, :method => :get, :class => 'btn btn-primary btn-lg', :style => 'background: #2EB398;' %></span>
   <%=render 'form_sort' %>
 </h3>
   <div class="main row">
@@ -27,8 +28,11 @@
 
         <% end %>
 
+
       <% end %>
 
       <% if count%4!=3 %>
             </div>
-      <% end %>  
+
+      <% end %> 
+</html> 

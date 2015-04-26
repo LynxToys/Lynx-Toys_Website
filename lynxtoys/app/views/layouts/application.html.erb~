@@ -60,7 +60,73 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body>
+
+<div id="wrapper">
+
+<div id="header">
+    
+<div class="header_bg" id="home"><!-- start header -->
+<div class="container">
+  <div class="row header text-center specials">
+    <!--div class="h_logo">
+      <a href="index.html"><img src="/assets/logo.png" alt="" class="responsive"/></a>
+    </div-->
+    <nav class="top-nav">
+      <ul class="top-nav nav_list">
+        <li class="page-scroll"><a href="/#buynow">buy now</a></li>
+        <li class="page-scroll"><a href="/#reviews">reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+        <li class="logo page-scroll"><a href="/#index"><img src="/assets/logo.png" alt="" class="responsive"/></a></li>
+        <li class="page-scroll"><a href="/creations">Community Collections</a></li>
+      </ul>
+      <a href="#" id="pull"><img src="/assets/nav-icon.png" title="menu" /></a>
+    </nav>
+    <div class="clearfix"></div>
+  </div>
+</div>
+</div>
+
+</div><!-- #header -->
+
+<div id="content">
+
+  <% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <% if flash[:warning] %>
+    <div class="warning"><%= flash[:warning] %></div>
+  <% end %>
   <%= yield %>
+  
+</div><!-- #content -->
+
+<div id="footer">
+  <div class="copy text-center">
+    <p class="link"><span>Lynx Toys &#169; All rights reserved | Template by&nbsp;<a href="http://w3layouts.com/"> W3Layouts</a></span></p>
+    <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+  </div>
+</div><!-- #footer -->
+
+<script type="text/javascript">
+    $(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+  
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+</script>
+<!---- start-smooth-scrolling----> 
+
+</div><!-- #wrapper -->  
+
 </body>
 
 </html>
