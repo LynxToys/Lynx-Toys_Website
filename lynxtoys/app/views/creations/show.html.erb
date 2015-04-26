@@ -2,7 +2,6 @@
 <h4><%= "Creator Name: "+@creation.creator_name%></h4>
 <h4><%= "Description: "+@creation.description%></h4>
 
-
 <tr>
    <td><% pluralize(@creation.votes.count, "vote") %></td>
    <td><% button_to '+1', upvote_creation_path(@creation), method: :post %></td>
