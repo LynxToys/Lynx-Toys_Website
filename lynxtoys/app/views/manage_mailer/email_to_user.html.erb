@@ -5,50 +5,48 @@
   </head>
   <body>
 	<% if @action == "accepted"%>
-    <h1>Hi, congratulations, your creation named <%= @creation.name %> has been accepted!</h1>
+    <h1>Congratulations, your creation named <%= @creation.name %> has been accepted!</h1>
     <p>
-	  We are very pleasure that you can join us.
+	  We are very pleased that you can join us.
 	  Thanks for using Lynxtoys product.
 	  <br/>
       You can use the following link to review your creation:
       <%= @url %>/creations/<%= @creation.id %>/
 	  <br/>
 	  <br/>
-	  Thanks again for your great work.
-      <br/>
-	  Best regards,<br/>
-	  Lynxtoys Product Team
+	  Thanks for your great work.
+      <br/><br/>
+	  Best regards,<br/><br/>
+	  Team Lynx
     
     </p>
 	<% elsif @action == "rejected"%>
-	<h1>Hi, we are sorry that your creation named <%= @creation.name %> has been rejected!</h1>
+	<h1>Hi, we are sorry that your creation named <%= @creation.name %> has been rejected.</h1>
     <p>
-	  We are very pleasure that you can join us.
-	  Thanks for using Lynxtoys product.
+	  Please keep creating and share with us again.
 	  <br/>
-	  Please don't stop creating.
-	  <br/>
-	  <br/>
-	  Thanks again for using our product.
+	  Thanks for using our product.
       <br/>
+	  <br/>
 	  Best regards,<br/>
-	  Lynxtoys Product Team
+	  <br/>
+	  Team Lynx
     
     </p>
 	<% elsif @action == "created"%>
 	<h1>Hi, your creation named <%= @creation.name %> has been created!</h1>
     <p>
-	  We are very pleasure that you can join us.
-	  After the manager review your creation, we will send you an email with the decision result.
-	  Thanks for using Lynxtoys product.
-	  <br/>
-	  Please don't stop creating.
+	  We are very pleased that you can join us.
+	  After your creation is reviewed, we will send you an email when it is published.
+	  Thanks for using Lynx.
 	  <br/>
 	  <br/>
-	  Thanks again for using our product.
+	  Thanks for using our product.
       <br/>
+		<br/>
 	  Best regards,<br/>
-	  Lynxtoys Product Team
+	 <br/>
+	  Team Lynx
     
     </p>
 	<%end%>
